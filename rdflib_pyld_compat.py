@@ -65,7 +65,37 @@ def pyld_graph_from_rdflib_graph(graph):
     return g
 
 
+def fix_type_null(j):
+    """In-plade recursive fix of problem with type: null in JSON-LD.
+
+    "pred": [
+      {
+        "@type": null,
+        "@value": "value"
+      }
+
+    to
+
+    "pred": "value"
+
+    FIXME -- how can this ve avoided in the first place?
+    """
+    if (isinstance(j, list)):
+        for j2 in j:
+            fix_type_null(j2)
+    elif (isinstance(j, dict)):
+        if (len(j) == 2 and '@type' in j and '@value' in j):
+            if (j['@type'] is None):
+                # case to fix if @type is None, simply remove '@type'
+                j.pop('@type')
+        else:
+            for k in j:
+                fix_type_null(j[k])
+
+
 def pyld_json_from_rdflib_graph(graph):
     """Get PyLD JSON object from and rdflib input graph."""
     default_graph = pyld_graph_from_rdflib_graph(graph)
-    return jsonld.from_rdf({'@default': default_graph})
+    j = jsonld.from_rdf({'@default': default_graph})
+    fix_type_null(j)
+    return(j)
