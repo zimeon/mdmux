@@ -1,0 +1,16 @@
+{
+  "@context": {
+    "id": "@id",
+    "type": "@type",
+    "value": "@value",
+    "bf": "http://id.loc.gov/ontologies/bibframe/",
+    "bib": "http://bib.ld4l.org/ontology/",
+    "vivo": "http://vivoweb.org/ontology/core#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "lang": "http://id.loc.gov/vocabulary/languages/",
+    "loc": "http://id.loc.gov/vocabulary/countries/"
+  }
+}
