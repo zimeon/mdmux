@@ -1,7 +1,11 @@
 {
-  "_doc": "Frame for biblioteko",
-  "@embed": "true",
-  "@type": [ "http://id.loc.gov/ontologies/bibframe/Instance",
-             "http://id.loc.gov/ontologies/bibframe/Work",
-             "http://id.loc.gov/ontologies/bibframe/Item" ]
+  "_doc": "Frame for bibliotek-o JSON-LD to split into Work, Instance, Item blocks",
+  "@context": {
+    "bf": "http://id.loc.gov/ontologies/bibframe/"
+  },
+  "@type": [ "bf:Work", "bf:Instance", "bf:Item" ],
+  "bf:instanceOf": {
+    "@type": [ "bf:Work", "bf:Instance", "bf:Item" ],
+    "@embed": "@never"
+  }
 }
