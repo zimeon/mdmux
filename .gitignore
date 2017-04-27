@@ -3,4 +3,5 @@
 htmlcov
 *.pyc
 *.egg-info
+*.eggs
 11.out

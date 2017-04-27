@@ -5,7 +5,6 @@ from rdflib_pyld_compat import pyld_json_from_rdflib_graph
 from pyld import jsonld
 from pymarc import Record, Field, XMLWriter
 from io import BytesIO
-import context_cache.for_pyld
 import json
 import re
 import sys
@@ -34,11 +33,13 @@ class Converter(object):
         # Manipulate the JSON in some way (say switch @context
         # to a reference) and output
         # -- no easy way to do this is rdflib
-        comp = jsonld.compact(jld, ctx="http://exmaple.org/biblioteko_context.json")
+        with open('cache/biblioteko_context.json', 'r') as cfh:
+            context = json.load(cfh)
         with open('cache/biblioteko_frame.json', 'r') as ffh:
             frame = json.load(ffh)
+        comp = jsonld.compact(jld, ctx=context)
         comp = jsonld.compact(jsonld.frame(comp, frame),
-                              ctx="http://exmaple.org/biblioteko_context.json",
+                              ctx=context,
                               options={'graph': True})
         if (self.dump_json):
             sys.stderr.write("Framed and compacted JSON-LD:\n" +
