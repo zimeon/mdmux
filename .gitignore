@@ -1,0 +1,6 @@
+.cache
+.coverage
+htmlcov
+*.pyc
+*.egg-info
+11.out

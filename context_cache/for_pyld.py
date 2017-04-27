@@ -14,7 +14,8 @@ def cached_load_document(url):
         return(jsonld.load_document(url))
     else:
         logging.debug("Reading %s from %s" % (url, filepath))
-        data = open(filepath, 'r').read()
+        with open(filepath, 'r') as fh:
+            data = fh.read()
         doc = {
             'contextUrl': None,
             'documentUrl': None,
