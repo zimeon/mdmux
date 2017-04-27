@@ -12,6 +12,6 @@ script:
   - pep8 --ignore=E501 mdmux tests *.py
   - pep257 mdmux
   - rst-lint README
-  - coverage run --source=resync setup.py test
+  - coverage run --source=mdmux setup.py test
 after_success:
   - coveralls
