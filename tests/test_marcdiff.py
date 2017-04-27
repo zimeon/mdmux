@@ -10,7 +10,7 @@ class TestMarcdiff(unittest.TestCase):
         self.assertRaises(Exception, read_marc, 'testdata/marc_0_records.xml')
         # first of three records
         r = read_marc('testdata/marc_3_records.xml')
-        self.assertEqual(r[1], 'test1')
+        self.assertEqual(r['001'].value(), 'test1')
 
     def test02_marc_diff(self):
         m1 = Record()
