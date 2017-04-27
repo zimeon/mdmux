@@ -62,6 +62,7 @@ setup(
     install_requires=[
         "rdflib>=4.2.0",
         "pyld",
+        "pymarc",
         "testfixtures"
     ],
     test_suite="tests",
