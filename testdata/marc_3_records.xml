@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Three very small MARC recrods -->
+<collection xmlns="http://www.loc.gov/MARC21/slim">
+  <record>
+    <leader>01050cam a22003011  4500</leader>
+    <controlfield tag="001">test1</controlfield>
+  </record>  
+  <record>
+    <leader>01050cam a22003011  4500</leader>
+    <controlfield tag="001">test2</controlfield>
+  </record>  
+  <record>
+    <leader>01050cam a22003011  4500</leader>
+    <controlfield tag="001">test3</controlfield>
+  </record>  
+</collection>

@@ -13,6 +13,7 @@ def read_marc(filename):
     records = parse_xml_to_array(filename)
     if (len(records) == 0):
         logging.error("No records in %s, aborting" % (filename))
+        raise Exception("No records in %s, aborting" % (filename))
     elif (len(records) > 1):
         logging.info("Have taken first of %d records from %s" % (len(records), filename))
     return(records[0])
@@ -41,7 +42,7 @@ def marc_diff(m1, m2, verbose=False, ignore=[]):
     f2 = next(m2, None)
     diff = []
     while (f1 or f2):
-        if (f1.tag == f2.tag):
+        if (f1 is not None and f2 is not None and f1.tag == f2.tag):
             if (str(f1) != str(f2) and int(f1.tag) not in ignore):
                 diff.append('-< %s' % (str(f1)))
                 diff.append('-> %s' % (str(f2)))
@@ -49,12 +50,12 @@ def marc_diff(m1, m2, verbose=False, ignore=[]):
                 diff.append('== %s' % (str(f1)))
             f1 = next(m1, None)
             f2 = next(m2, None)
-        elif (f1.tag < f2.tag):
-            if (int(f1.tag) not in ignore):
-                diff.append('<< %s' % (str(f1)))
-            f1 = next(m1, None)
-        elif (f1.tag > f2.tag):
+        elif (f1 is None or (f2 is not None and f1.tag > f2.tag)):
             if (int(f2.tag) not in ignore):
                 diff.append('>> %s' % (str(f2)))
             f2 = next(m2, None)
+        elif (f2 is None or f1.tag < f2.tag):
+            if (int(f1.tag) not in ignore):
+                diff.append('<< %s' % (str(f1)))
+            f1 = next(m1, None)
     return('\n'.join(diff))
