@@ -20,7 +20,7 @@ class TestConverter(unittest.TestCase):
             fh.close()
             m1 = read_marc('testdata/102063.min.xml')
             m2 = read_marc(fh.name)
-            self.assertEqual(marc_diff(m1, m2, ignore=[1,8]), '')
+            self.assertEqual(marc_diff(m1, m2, ignore=[1, 8]), '')
 
 
 if __name__ == '__main__':

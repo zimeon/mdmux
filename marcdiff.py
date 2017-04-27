@@ -16,7 +16,7 @@ def main():
     p.add_option('--verbose', '-v', action='store_true',
                  help="verbose, show additional informational messages")
     (opt, args) = p.parse_args()
-    if (len(args) !=2):
+    if (len(args) != 2):
         p.error("Must specify two filenames to diff!")
 
     level = logging.INFO if (opt.verbose) else logging.WARNING
