@@ -1,7 +1,7 @@
 """Convert BIBFRAME to MARC."""
 from rdflib import Graph
 from rdflib.namespace import Namespace, RDF
-from rdflib_pyld_compat import pyld_json_from_rdflib_graph
+from rdflib_pyld_compat import pyld_jsonld_from_rdflib_graph
 from pyld import jsonld
 from pymarc import Record, Field, XMLWriter
 from io import BytesIO
@@ -27,7 +27,7 @@ class Converter(object):
             g.parse(file=fh, format='n3')
 
         # Get JSON-LD object in PyLD form
-        jld = pyld_json_from_rdflib_graph(g)
+        jld = pyld_jsonld_from_rdflib_graph(g)
         # print(json.dumps(jld, indent=2, sort_keys=True))
 
         # Manipulate the JSON in some way (say switch @context

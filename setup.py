@@ -63,7 +63,8 @@ setup(
         "rdflib>=4.2.0",
         "pyld",
         "pymarc",
-        "testfixtures"
+        "testfixtures",
+        "rdflib-pyld-compat"
     ],
     test_suite="tests",
     cmdclass={
