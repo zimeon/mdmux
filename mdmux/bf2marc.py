@@ -42,8 +42,8 @@ class Converter(object):
                               ctx=context,
                               options={'graph': True})
         if (self.dump_json):
-            sys.stderr.write("Framed and compacted JSON-LD:\n" +
-                             json.dumps(comp, indent=2, sort_keys=True) + '\n')
+            sys.stderr.write("Framed and compacted JSON-LD:\n"
+                             + json.dumps(comp, indent=2, sort_keys=True) + '\n')
         self.jsonld = comp
 
         memory = BytesIO()
@@ -98,8 +98,8 @@ class Converter(object):
         #    <leader>01050cam a22003011  4500</leader>
         #    <controlfield tag="001">102063</controlfield>
         #    <controlfield tag="008">860506s1957    nyua     b    000 0 eng  </controlfield>
-        if ('bib:hasActivity' in obj and
-                obj['bib:hasActivity'].get('type') == "bib:PublicationActivity"):
+        if ('bib:hasActivity' in obj
+                and obj['bib:hasActivity'].get('type') == "bib:PublicationActivity"):
             # https://www.loc.gov/marc/bibliographic/bd008.html
             pub_year = obj['bib:hasActivity'].get('dcterms:date', '')
             pub_loc = ''
